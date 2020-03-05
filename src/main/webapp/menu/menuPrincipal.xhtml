@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form prependId="false">
+		<p:menubar>
+			<p:menuitem value="#{msg.inicio}" icon="ui-icon-home" action="inhome" />
+			<p:menuitem value="#{msg.contactenos}" icon="ui-icon-contact"
+				action="incontacto" />
+			<p:submenu icon="ui-icon-flag" label="Valores Institucionales">
+				<p:menuitem value="#{msg.misiontitle}" action="inMision"
+					icon="ui-icon-key" />
+				<p:menuitem value="#{msg.visiontitle}" action="inVision"
+					icon="ui-icon-check" />
+			</p:submenu>
+			<p:menuitem value="#{msg.creditotitle}" action="incredito"
+				icon="ui-icon-check" />
+		</p:menubar>
+	</h:form>
+</ui:composition>

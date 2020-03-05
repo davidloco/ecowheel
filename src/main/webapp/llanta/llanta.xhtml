@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form prependId="false">
+		<p:panel header="#{msg.llanta}">
+			<p:messages showDetail="true" showSummary="false" autoUpdate="true"
+				closable="true" />
+
+			<h:panelGrid id="llanta" columns="2" columnClasses="columnizquierda">
+
+				<p:outputLabel value="#{msg.marca}:" />
+				<p:inputText required="true" value="#{llanta.llanta.strnombre}"
+					label="#{msg.marca}">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+
+				<p:commandButton value="#{msg.guardar}" icon="ui-icon-tag"
+					update="llanta, tableLlanta" styleClass="ui-priority-primary"
+					action="#{llanta.guardar()}" />
+
+			</h:panelGrid>
+
+			<p:spacer height="10" />
+
+			<p:dataTable id="tableLlanta" var="llan" emptyMessage="#{msg.label1}"
+				reflow="true" value="#{llanta.listLlantas}" resizableColumns="true"
+				rows="5" paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,15,25" style="width:50%">
+				<p:column headerText="#{msg.marca}" sortBy="#{llan.strnombre}"
+					filterMatchMode="contains" filterBy="#{llan.strnombre}">
+					<h:outputText value="#{llan.strnombre}" />
+				</p:column>
+				<p:column headerText="#{msg.eliminar}">
+					<p:commandButton icon="ui-icon-trash" update="tableLlanta"
+						immediate="true" styleClass="ui-priority-primary"
+						action="#{llanta.eliminar(llan)}" alt="#{msg.eliminar}" />
+				</p:column>
+				<p:column headerText="#{msg.modificar}">
+					<p:commandButton icon="ui-icon-pencil" update="tableLlanta"
+						immediate="true" styleClass="ui-priority-primary"
+						alt="#{msg.modificar}" />
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+</ui:composition>

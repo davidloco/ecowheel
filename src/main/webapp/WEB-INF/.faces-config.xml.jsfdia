@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="56,136,53,58" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inhome::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="inhome" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="incontacto::#contacto#contacto.xhtml"
+    NAME="output6" PATH="/contacto/contacto.xhtml"
+    TARGET="rules:#contacto#contacto.xhtml" TITLE="incontacto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inregistro::#registro#registro.xhtml"
+    NAME="output1" PATH="/registro/registro.xhtml"
+    TARGET="rules:#registro#registro.xhtml" TITLE="inregistro" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="incliente::#cliente#clienteHome.xhtml"
+    NAME="output2" PATH="/cliente/clienteHome.xhtml"
+    TARGET="rules:#cliente#clienteHome.xhtml" TITLE="incliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inllanta::#llanta#llantaHome.xhtml"
+    NAME="output3" PATH="/llanta/llantaHome.xhtml"
+    TARGET="rules:#llanta#llantaHome.xhtml" TITLE="inllanta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inrin::#rin#rinHome.xhtml" NAME="output4"
+    PATH="/rin/rinHome.xhtml" TARGET="rules:#rin#rinHome.xhtml"
+    TITLE="inrin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inLogin::#login#login.xhtml" NAME="output5"
+    PATH="/login/login.xhtml" TARGET="rules:#login#login.xhtml"
+    TITLE="inLogin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inCertificado::#reportes#certificado.xhtml"
+    NAME="output7" PATH="/reportes/certificado.xhtml"
+    TARGET="rules:#reportes#certificado.xhtml" TITLE="inCertificado" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inInformexMes::#reportes#informexmes.xhtml"
+    NAME="output8" PATH="/reportes/informexmes.xhtml"
+    TARGET="rules:#reportes#informexmes.xhtml" TITLE="inInformexMes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inInformexNfu::#reportes#informenfu.xhtml"
+    NAME="output9" PATH="/reportes/informenfu.xhtml"
+    TARGET="rules:#reportes#informenfu.xhtml" TITLE="inInformexNfu" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="inMision::#valores_institucionales#mision.xhtml" NAME="output10"
+    PATH="/valores_institucionales/mision.xhtml"
+    TARGET="rules:#valores_institucionales#mision.xhtml"
+    TITLE="inMision" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="inVision::#valores_institucionales#vision.xhtml" NAME="output11"
+    PATH="/valores_institucionales/vision.xhtml"
+    TARGET="rules:#valores_institucionales#vision.xhtml"
+    TITLE="inVision" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="salir::index.xhtml" NAME="output12"
+    PATH="index.xhtml" TARGET="rules:index.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:index.xhtml" PATH="index.xhtml"
+  SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#valores_institucionales#mision.xhtml"
+  PATH="/valores_institucionales/mision.xhtml" SHAPE="304,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#login#login.xhtml" PATH="/login/login.xhtml"
+  SHAPE="304,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="304,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#contacto#contacto.xhtml"
+  PATH="/contacto/contacto.xhtml" SHAPE="304,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#registro#registro.xhtml"
+  PATH="/registro/registro.xhtml" SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#cliente#clienteHome.xhtml"
+  PATH="/cliente/clienteHome.xhtml" SHAPE="304,449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#llanta#llantaHome.xhtml"
+  PATH="/llanta/llantaHome.xhtml" SHAPE="304,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#rin#rinHome.xhtml" PATH="/rin/rinHome.xhtml"
+  SHAPE="304,513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#reportes#certificado.xhtml"
+  PATH="/reportes/certificado.xhtml" SHAPE="304,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#reportes#informexmes.xhtml"
+  PATH="/reportes/informexmes.xhtml" SHAPE="304,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#reportes#informenfu.xhtml"
+  PATH="/reportes/informenfu.xhtml" SHAPE="304,577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#valores_institucionales#vision.xhtml"
+  PATH="/valores_institucionales/vision.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

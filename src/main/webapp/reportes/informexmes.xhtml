@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/plantillaInicial.xhtml">
+	<ui:define name="top">
+		<ui:include src="/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="west">
+
+	</ui:define>
+	<ui:define name="content">
+		<h:form prependId="false" target="_blank">
+			<p:panel header="#{msg.label23}">
+
+				<p:messages id="messages" showDetail="true" showSummary="false"
+					autoUpdate="true" closable="true" />
+
+				<h:panelGrid columns="1" width="100%">
+					<p:spacer height="20" />
+					<h:panelGrid columns="4" styleClass="panelMedio2">
+						<p:outputLabel value="#{msg.fechaInicio}:" />
+						<p:calendar showOn="button" value="#{reporte.fechaIni}"
+							label="#{msg.fechaInicio}" />
+
+						<p:outputLabel value="#{msg.fechaFin}:" />
+						<p:calendar showOn="button" value="#{reporte.fechaFin}"
+							label="#{msg.fechaFin}" />
+					</h:panelGrid>
+					<p:spacer height="20" />
+					<h:panelGrid columns="3" styleClass="panelMedio2">
+						<h:commandLink styleClass="pdf"
+							action="#{reporte.generarInformeXMes('1')}" />
+						<h:commandLink styleClass="excel"
+							action="#{reporte.generarInformeXMes('2')}" />
+						<h:commandLink styleClass="word"
+							action="#{reporte.generarInformeXMes('3')}" />
+					</h:panelGrid>
+				</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

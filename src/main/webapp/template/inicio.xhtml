@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:galleria value="#{parametrica.cargarImagen()}" var="img"
+		effect="fade" transitionInterval="10000" panelHeight="400"
+		showCaption="true" panelWidth="1141">
+		<p:graphicImage value="resources/images/#{img.strvalor}"
+			title="#{img.strtitle}" alt="#{img.strdescripcion}" height="500" />
+	</p:galleria>
+
+	<script language="JavaScript"> 
+	document.writeln( parseInt((screen.width - (screen.width*15)/100) - 20) + " x " + screen.height) 
+	</script>
+
+</ui:composition>

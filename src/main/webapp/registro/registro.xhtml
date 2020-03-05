@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/plantillaInicial.xhtml">
+	<ui:define name="top">
+		<ui:include src="/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="west">
+
+	</ui:define>
+	<ui:define name="content">
+
+		<ui:remove>
+			<p:commandButton icon="ui-icon-tag" styleClass="ui-priority-primary" />
+		</ui:remove>
+
+		<h:form prependId="false">
+			<p:messages id="messages" showDetail="true" showSummary="false"
+				autoUpdate="true" closable="true" />
+
+			<p:panel header="#{msg.registro}">
+				<p:wizard nextLabel="#{msg.siguiente}" backLabel="#{msg.atras}"
+					style="width:40%;">
+					<p:tab title="#{msg.certificado}">
+						<p:panel>
+							<h:panelGrid columns="2">
+								<p:outputLabel value="#{msg.cliente}:" />
+								<p:selectOneMenu value="#{registro.registro.cliente.intid}"
+									validatorMessage="#{msg.IODErr9}" required="true"
+									label="#{msg.cliente}">
+									<f:selectItem itemValue="0" itemLabel="#{msg.seleccione}" />
+									<f:selectItems value="#{registro.listClientes}" var="PCliente"
+										itemValue="#{PCliente.intid}"
+										itemLabel="#{PCliente.strnombre} - #{PCliente.strnit}" />
+									<f:validateDoubleRange minimum="1" />
+								</p:selectOneMenu>
+
+								<p:outputLabel value="#{msg.fecha}:" />
+								<p:calendar showOn="button"
+									value="#{registro.registro.datefecha}" required="true"
+									label="#{msg.fecha}">
+									<f:convertDateTime pattern="dd/MM/yy" />
+								</p:calendar>
+
+								<p:outputLabel value="#{msg.certificado}:" />
+								<p:inputText label="#{msg.certificado}" required="true"
+									value="#{registro.registro.intcertificado}">
+									<f:validateLength minimum="2" />
+								</p:inputText>
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+					<p:tab title="#{msg.registro}">
+						<p:panel>
+							<h:panelGrid columns="2" id="registro">
+								<p:outputLabel value="#{msg.llanta}:" />
+								<p:autoComplete id="llanta" forceSelection="true"
+									value="#{registro.registro.llanta.strnombre}" required="true"
+									validatorMessage="#{msg.IODErr8}" effect="fade" maxResults="10"
+									completeMethod="#{registro.completeText}" dropdown="true">
+									<p:ajax event="itemSelect" listener="#{registro.onItemSelect}" />
+								</p:autoComplete>
+
+								<p:outputLabel value="#{msg.rin}:" />
+								<p:selectOneMenu value="#{registro.registro.rin.intid}"
+									validatorMessage="#{msg.IODErr10}" style="width:100%;"
+									required="true" label="#{msg.rin}">
+									<f:selectItem itemValue="0" itemLabel="#{msg.seleccione}" />
+									<f:selectItems value="#{registro.listRins}" var="PRin"
+										itemValue="#{PRin.intid}" itemLabel="#{PRin.strnombre}" />
+									<f:validateDoubleRange minimum="1" />
+								</p:selectOneMenu>
+
+								<p:outputLabel value="#{msg.peso}:" />
+								<p:inputText label="#{msg.peso}"
+									value="#{registro.registro.numpeso}" required="true" />
+
+								<p:outputLabel value="#{msg.unidades}:" />
+								<p:inputText value="#{registro.intunidades}" required="true"
+									label="#{msg.unidades}">
+									<f:validateLength minimum="1" />
+									<f:validateRegex pattern="[0-9]*" />
+								</p:inputText>
+							</h:panelGrid>
+
+							<p:commandButton value="#{msg.guardar}" icon="ui-icon-tag"
+								update="registro, tableRegistro"
+								styleClass="ui-priority-primary" action="#{registro.guardar()}" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+
+				<p:spacer height="10" />
+
+				<p:dataTable id="tableRegistro" var="reg" reflow="true"
+					emptyMessage="#{msg.label1}" value="#{registro.listRegistros}"
+					resizableColumns="true" rows="5" paginator="true" editable="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,15,25" paginatorPosition="bottom">
+
+					<p:ajax event="rowEdit" listener="#{registro.editar}" />
+
+					<p:column headerText="#{msg.fecha}" sortBy="#{reg.datefecha}"
+						filterMatchMode="contains" filterBy="#{reg.datefecha}">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.datefecha}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:calendar value="#{reg.datefecha}" required="true"
+									label="#{msg.fecha}" style="width: 30px;">
+									<f:convertDateTime pattern="dd/MM/yy" />
+								</p:calendar>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.cliente} - #{msg.nit}"
+						sortBy="#{reg.cliente.strnombre}" filterMatchMode="contains"
+						filterBy="#{reg.cliente.strnombre}">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText
+									value="#{reg.cliente.strnombre} - #{reg.cliente.strnit}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneMenu value="#{reg.cliente.intid}"
+									validatorMessage="#{msg.IODErr9}" required="true"
+									label="#{msg.cliente}" style="width:90%;">
+									<f:selectItems value="#{registro.listClientes}" var="PCliente"
+										itemValue="#{PCliente.intid}"
+										itemLabel="#{PCliente.strnombre} - #{PCliente.strnit}" />
+									<f:validateDoubleRange minimum="1" />
+								</p:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.certificado}"
+						sortBy="#{reg.intcertificado}" filterMatchMode="contains"
+						filterBy="#{reg.intcertificado}">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.intcertificado}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText label="#{msg.certificado}" required="true"
+									value="#{reg.intcertificado}">
+									<f:validateLength minimum="2" />
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.unidades}" sortBy="#{reg.intunidades}"
+						filterMatchMode="contains" filterBy="#{reg.intunidades}"
+						style="text-align: center;">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.intunidades}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{registro.intunidadesEdit}" required="true"
+									label="#{msg.unidades}">
+									<f:validateLength minimum="1" />
+									<f:validateRegex pattern="[0-9]*" />
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.marca}"
+						sortBy="#{reg.llanta.strnombre}" filterMatchMode="contains"
+						filterBy="#{reg.llanta.strnombre}">
+
+
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.llanta.strnombre}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:autoComplete id="llanta" forceSelection="true"
+									value="#{reg.llanta.strnombre}" required="true"
+									validatorMessage="#{msg.IODErr8}" effect="fade" maxResults="10"
+									completeMethod="#{registro.completeText}" dropdown="true">
+									<p:ajax event="itemSelect" listener="#{registro.onItemSelect}" />
+								</p:autoComplete>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.peso}" sortBy="#{reg.numpeso}"
+						filterMatchMode="contains" filterBy="#{reg.numpeso}">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.numpeso}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText label="#{msg.peso}" value="#{reg.numpeso}"
+									required="true" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.rin}" sortBy="#{reg.rin.strnombre}"
+						filterMatchMode="contains" filterBy="#{reg.rin.strnombre}">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{reg.rin.strnombre}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneMenu value="#{reg.rin.intid}"
+									validatorMessage="#{msg.IODErr10}" style="width:100%;"
+									required="true" label="#{msg.rin}">
+									<f:selectItems value="#{registro.listRins}" var="PRin"
+										itemValue="#{PRin.intid}" itemLabel="#{PRin.strnombre}" />
+									<f:validateDoubleRange minimum="1" />
+								</p:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="#{msg.eliminar}">
+						<p:commandButton icon="ui-icon-trash" update="@form"
+							immediate="true" styleClass="ui-priority-primary" ajax="true"
+							alt="#{msg.eliminar}" action="#{registro.eliminar(reg)}" />
+					</p:column>
+					<p:column headerText="#{msg.modificar}">
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

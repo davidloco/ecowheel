@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form prependId="false">
+		<p:panel header="#{msg.rin}">
+			<p:messages showDetail="true" showSummary="false" autoUpdate="true"
+				closable="true" />
+
+			<h:panelGrid id="rin" columns="2" columnClasses="columnizquierda">
+
+				<p:outputLabel value="#{msg.name}:" />
+				<p:inputText required="true" value="#{rin.rin.strnombre}"
+					label="#{msg.name}">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+
+				<p:commandButton value="#{msg.guardar}" icon="ui-icon-tag"
+					update="rin, tableRin" styleClass="ui-priority-primary"
+					action="#{rin.guardar()}" />
+
+			</h:panelGrid>
+			
+			<p:spacer height="10" />
+			
+			<p:dataTable id="tableRin" var="ri" value="#{rin.listRins}"
+				emptyMessage="#{msg.label1}" resizableColumns="true" rows="5"
+				paginator="true" paginatorPosition="bottom" style="width:50%">
+				<p:column headerText="#{msg.name}" sortBy="#{ri.strnombre}"
+					filterMatchMode="contains" filterBy="#{ri.strnombre}">
+					<h:outputText value="#{ri.strnombre}" />
+				</p:column>
+				<p:column headerText="#{msg.eliminar}">
+					<p:commandButton icon="ui-icon-trash" update="tableRin"
+						immediate="true" styleClass="ui-priority-primary"
+						alt="#{msg.eliminar}" action="#{rin.eliminar(ri)}" />
+				</p:column>
+				<p:column headerText="#{msg.modificar}">
+					<p:commandButton icon="ui-icon-pencil" update="tableRin"
+						immediate="true" styleClass="ui-priority-primary"
+						alt="#{msg.modificar}" />
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+</ui:composition>

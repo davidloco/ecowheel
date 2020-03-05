@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form prependId="false">
+		<p:panel header="#{msg.cliente}">
+			<p:messages showDetail="true" showSummary="false" autoUpdate="true"
+				closable="true" />
+
+			<h:panelGrid id="clientepanel" columns="2"
+				columnClasses="columnizquierda">
+
+				<h:panelGrid columns="2">
+					<p:outputLabel value="#{msg.name}:" />
+					<p:inputText required="true" value="#{cliente.cliente.strnombre}"
+						label="#{msg.name}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+
+					<p:outputLabel value="#{msg.nit}:" />
+					<p:inputText required="true" value="#{cliente.cliente.strnit}"
+						label="#{msg.nit}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+
+					<p:outputLabel value="#{msg.direccion}:" />
+					<p:inputText value="#{cliente.cliente.strdireccion}"
+						label="#{msg.direccion}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:outputLabel value="#{msg.ciudad}:" />
+					<p:inputText value="#{cliente.cliente.strciudad}"
+						label="#{msg.ciudad}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+
+					<p:outputLabel value="#{msg.contacto}:" />
+					<p:inputText value="#{cliente.cliente.strcontacto}"
+						label="#{msg.contacto}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+
+					<p:outputLabel value="#{msg.telefono}:" />
+					<p:inputText value="#{cliente.cliente.strtelefono}"
+						label="#{msg.telefono}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+				</h:panelGrid>
+
+				<p:commandButton value="#{msg.guardar}" icon="ui-icon-tag"
+					update="clientepanel, tableCliente"
+					styleClass="ui-priority-primary" action="#{cliente.guardar()}" />
+
+			</h:panelGrid>
+
+			<p:spacer height="10" />
+
+			<p:dataTable id="tableCliente" var="cli" emptyMessage="#{msg.label1}"
+				value="#{cliente.listClientes}" resizableColumns="true" rows="5"
+				reflow="true" paginator="true" paginatorPosition="bottom"
+				editable="true" rowsPerPageTemplate="5,15,25" style="width:100%;"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<p:ajax event="rowEdit" listener="#{cliente.editar}" />
+
+				<p:column headerText="#{msg.name}" sortBy="#{cli.strnombre}"
+					filterMatchMode="contains" filterBy="#{cli.strnombre}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strnombre}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText required="true" value="#{cli.strnombre}"
+								label="#{msg.name}" style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.nit}" sortBy="#{cli.strnit}"
+					filterMatchMode="contains" filterBy="#{cli.strnit}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strnit}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText required="true" value="#{cli.strnit}"
+								label="#{msg.nit}" style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.direccion}" sortBy="#{cli.strdireccion}"
+					filterMatchMode="contains" filterBy="#{cli.strdireccion}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strdireccion}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{cli.strdireccion}" label="#{msg.direccion}"
+								style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.ciudad}" sortBy="#{cli.strciudad}"
+					filterMatchMode="contains" filterBy="#{cli.strciudad}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strciudad}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{cli.strciudad}" label="#{msg.ciudad}"
+								style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.contacto}" sortBy="#{cli.strcontacto}"
+					filterMatchMode="contains" filterBy="#{cli.strcontacto}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strcontacto}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{cli.strcontacto}" label="#{msg.contacto}"
+								style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.telefono}" sortBy="#{cli.strtelefono}"
+					filterMatchMode="contains" filterBy="#{cli.strtelefono}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{cli.strtelefono}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{cli.strtelefono}" label="#{msg.telefono}"
+								style="width:90%;">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="#{msg.eliminar}">
+					<p:commandButton icon="ui-icon-trash" update="@(.tableCliente)"
+						immediate="true" styleClass="ui-priority-primary"
+						action="#{cliente.eliminar(cli)}" alt="#{msg.eliminar}" />
+				</p:column>
+				<p:column headerText="#{msg.modificar}">
+					<p:rowEditor />
+				</p:column>
+			</p:dataTable>
+			<p:remoteCommand name="eliminarUpdate" update="tableCliente"
+				immediate="true" />
+		</p:panel>
+	</h:form>
+
+</ui:composition>

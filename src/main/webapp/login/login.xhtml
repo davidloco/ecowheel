@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/plantillaInicial.xhtml">
+	<ui:define name="top">
+		<ui:include src="/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="west">
+
+	</ui:define>
+	<ui:define name="content">
+		<h:panelGrid columns="1">
+			<h:form prependId="false">
+				<p:panel>
+					<p:messages id="messages" showDetail="true" showSummary="false"
+						autoUpdate="true" closable="true" />
+
+					<h:panelGrid id="logueo" columns="2"
+						columnClasses="columnizquierda">
+						<p:outputLabel value="#{msg.usuario}" />
+						<p:inputText id="username" required="true"
+							value="#{login.datos.username}" label="#{msg.usuario}">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+
+						<p:outputLabel value="#{msg.contrasena}" />
+						<p:password id="password" required="true"
+							value="#{login.datos.password}" label="#{msg.contrasena}">
+							<f:validateLength minimum="2" />
+						</p:password>
+
+						<p:commandButton value="#{msg.entrar}" icon="ui-icon-tag"
+							update="logueo" styleClass="ui-priority-primary"
+							action="#{login.autenticarUsuario()}" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:panelGrid>
+	</ui:define>
+</ui:composition>

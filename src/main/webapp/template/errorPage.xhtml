@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/plantillaInicial.xhtml">
+	<ui:define name="top">
+		<ui:include src="/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<h:panelGrid width="100%" columns="1" columnClasses="columnCenterTable">
+			<h:outputLabel value="#{msg.IODErr2}" styleClass="errorPage"/>
+			<h:graphicImage value="/resources/images/bebe_llorando.png" />
+			<h:outputLabel value="#{msg.IODErr3}" styleClass="errorPage"/>
+		</h:panelGrid>
+	</ui:define>
+</ui:composition>

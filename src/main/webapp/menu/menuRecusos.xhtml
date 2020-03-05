@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form prependId="false">
+		<p:menu style="width:95%;" rendered="#{login.bandera}">
+			<p:submenu label="#{msg.recursos}">
+				<p:menuitem value="#{msg.registro}" icon="ui-icon-clipboard"
+					action="inregistro" />
+				<p:menuitem value="#{msg.cliente}" icon="ui-icon-person"
+					action="incliente" />
+				<p:menuitem value="#{msg.rin}" icon="ui-icon-gear" action="inrin" />
+				<p:menuitem value="#{msg.llanta}" icon="ui-icon-gear"
+					action="inllanta" />
+			</p:submenu>
+		</p:menu>
+		<ui:remove>
+			<p:menu style="width:95%;" rendered="#{login.reportes}">
+				<p:submenu label="#{msg.reportes}">
+					<p:menuitem value="#{msg.label23}" icon="ui-icon-note"
+						action="inInformexMes" />
+					<p:menuitem value="#{msg.label24}" icon="ui-icon-note"
+						action="inInformexNfu" />
+					<p:menuitem value="#{msg.certificado}" icon="ui-icon-note"
+						action="inCertificado" />
+				</p:submenu>
+			</p:menu>
+		</ui:remove>
+		<p:menu style="width:95%;">
+			<p:submenu label="#{msg.principal}">
+				<p:menuitem value="#{msg.ingresar}" icon="ui-icon-home"
+					action="inLogin" />
+				<p:menuitem value="#{msg.salir}" icon="ui-icon-closethick"
+					action="#{login.logout()}" />
+			</p:submenu>
+		</p:menu>
+	</h:form>
+</ui:composition>

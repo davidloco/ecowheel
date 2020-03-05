@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/plantillaInicial.xhtml">
+	<ui:define name="top">
+		<ui:include src="/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="west">
+
+	</ui:define>
+	<ui:define name="content">
+		<p:panel header="#{msg.certificado}">
+			<h:form id="form" prependId="false" target="_blank">
+
+				<p:messages id="messages" showDetail="true" showSummary="false"
+					autoUpdate="true" closable="true" />
+
+				<h:panelGrid columns="2" width="100%" columnClasses="columnSmall, columnBig">
+
+					<h:panelGrid columns="1">
+						<h:panelGrid columns="2" width="100%" id="panelFecha">
+							<p:outputLabel value="#{msg.fecha}:" />
+
+							<p:calendar showOn="button" value="#{reporte.fecha}"
+								label="#{msg.fechaFin}">
+								<p:ajax event="dateSelect" render="@this" />
+							</p:calendar>
+						</h:panelGrid>
+
+						<p:commandButton value="#{msg.consultar}" icon="ui-icon-tag"
+							update="panelFecha, tableActas" styleClass="ui-priority-primary"
+							actionListener="#{reporte.llenarListRegistros()}"
+							immediate="true" />
+
+						<p:dataTable var="reg" reflow="true" emptyMessage="#{msg.label1}"
+							value="#{reporte.listRegistros}" resizableColumns="true" rows="5"
+							paginator="true" rowsPerPageTemplate="5,15,25"
+							paginatorPosition="bottom" id="tableActas"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+							<p:column headerText="#{msg.certificado}" sortBy="#{reg}"
+								filterMatchMode="contains" filterBy="#{reg}">
+								<h:outputText value="#{reg}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" width="100%">
+						<p:tabView effect="fade">
+							<p:tab title="#{msg.certificado}">
+								<h:panelGrid style="width:100%">
+									<h:panelGrid columns="2" styleClass="panelMedio2">
+										<p:outputLabel value="#{msg.certificado}:" />
+										<p:inputText value="#{reporte.certificado}"
+											label="#{msg.certificado}">
+											<f:validateRegex pattern="[0-9]*" />
+										</p:inputText>
+
+										<p:outputLabel value="#{msg.texto}:" />
+										<h:inputTextarea cols="63" rows="6" value="#{reporte.texto1}" />
+									</h:panelGrid>
+								</h:panelGrid>
+
+
+								<p:spacer height="20" />
+								<h:panelGrid columns="3" styleClass="panelMedio2">
+									<h:commandLink styleClass="pdf"
+										action="#{reporte.generarCertificado('1', true)}" />
+									<h:commandLink styleClass="excel"
+										action="#{reporte.generarCertificado('2', true)}" />
+									<h:commandLink styleClass="word"
+										action="#{reporte.generarCertificado('3', true)}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.cliente} X #{msg.fecha}" id="tabcer">
+								<h:panelGrid style="width:100%">
+									<h:panelGrid columns="4" styleClass="panelMedio2">
+										<p:outputLabel value="#{msg.fechaInicio}:" />
+										<p:calendar showOn="button" value="#{reporte.fechaIni}"
+											label="#{msg.fechaInicio}" />
+
+										<p:outputLabel value="#{msg.fechaFin}:" />
+										<p:calendar showOn="button" value="#{reporte.fechaFin}"
+											label="#{msg.fechaFin}" />
+									</h:panelGrid>
+
+									<h:panelGrid columns="2" styleClass="panelMedio2">
+										<p:outputLabel value="#{msg.texto}:" />
+										<h:inputTextarea cols="63" rows="6" value="#{reporte.texto2}" />
+
+										<p:outputLabel value="#{msg.cliente}:" />
+										<p:selectOneMenu value="#{reporte.cliente}"
+											validatorMessage="#{msg.IODErr9}" label="#{msg.cliente}">
+											<f:selectItem itemValue="0" itemLabel="#{msg.seleccione}" />
+											<f:selectItems value="#{reporte.listClientes}" var="PCliente"
+												itemValue="#{PCliente.intid}"
+												itemLabel="#{PCliente.strnombre} - #{PCliente.strnit}" />
+										</p:selectOneMenu>
+									</h:panelGrid>
+								</h:panelGrid>
+								<p:spacer height="20" />
+								<h:panelGrid columns="3" styleClass="panelMedio2">
+									<h:commandLink styleClass="pdf"
+										action="#{reporte.generarCertificado('1', false)}" />
+									<h:commandLink styleClass="excel"
+										action="#{reporte.generarCertificado('2', false)}" />
+									<h:commandLink styleClass="word"
+										action="#{reporte.generarCertificado('3', false)}" />
+								</h:panelGrid>
+							</p:tab>
+						</p:tabView>
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+
+
+	</ui:define>
+</ui:composition>
