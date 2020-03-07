@@ -1490,7 +1490,7 @@ limit 1]]></xml-property>
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="331">
-                                            <text-property name="text">900952289-0</text-property>
+                                            <text-property name="text">0</text-property>
                                         </label>
                                     </cell>
                                 </row>
@@ -1520,7 +1520,7 @@ limit 1]]></xml-property>
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="332">
-                                            <text-property name="text">Kilometro 14 vía al magdalena, parque industrial tesorito bodega 3</text-property>
+                                            <text-property name="text">Kilometro 14</text-property>
                                         </label>
                                     </cell>
                                 </row>
@@ -1550,7 +1550,7 @@ limit 1]]></xml-property>
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="333">
-                                            <text-property name="text">8931650 - 3015602486</text-property>
+                                            <text-property name="text">3017203632</text-property>
                                         </label>
                                     </cell>
                                 </row>
@@ -1580,7 +1580,7 @@ limit 1]]></xml-property>
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="334">
-                                            <text-property name="text">Yolanda Restrepo Giraldo</text-property>
+                                            <text-property name="text">David Andres Betancourth Botero</text-property>
                                         </label>
                                     </cell>
                                 </row>
