@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="fechaIni" id="224">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">date</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">dd-MM-yy</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="fechaFin" id="225">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">date</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">dd-MM-yy</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/ecowheel</property>
+            <property name="odaUser">postgres</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">MTIzNA==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">mes</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">mes</text-property>
+                    <text-property name="heading">mes</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">datefecha</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">datefecha</text-property>
+                    <text-property name="heading">datefecha</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">strnombre</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <text-property name="heading">strnombre</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">strnit</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">strnit</text-property>
+                    <text-property name="heading">strnit</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">intcertificado</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">intcertificado</text-property>
+                    <text-property name="heading">intcertificado</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">intunidades</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">intunidades</text-property>
+                    <text-property name="heading">intunidades</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">strnombre_1</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <text-property name="heading">strnombre</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">numpeso</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">numpeso</text-property>
+                    <text-property name="heading">numpeso</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">strnombre_2</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <text-property name="heading">strnombre</text-property>
+                </structure>
+            </list-property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">ge</property>
+                    <expression name="expr" type="javascript">if(params["fechaIni"].value!=null)&#13;
+{&#13;
+row["datefecha"]&#13;
+}</expression>
+                    <simple-property-list name="value1">
+                        <value>params["fechaIni"].value</value>
+                    </simple-property-list>
+                </structure>
+                <structure>
+                    <property name="operator">le</property>
+                    <expression name="expr" type="javascript">if(params["fechaFin"].value!=null)&#13;
+{&#13;
+row["datefecha"]&#13;
+}</expression>
+                    <simple-property-list name="value1">
+                        <value>params["fechaFin"].value</value>
+                    </simple-property-list>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">mes</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">datefecha</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">strnombre</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">strnit</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">intcertificado</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">intunidades</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">strnombre_1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">numpeso</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">strnombre_2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">mes</property>
+                    <property name="nativeName">mes</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">datefecha</property>
+                    <property name="nativeName">datefecha</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">strnombre</property>
+                    <property name="nativeName">strnombre</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">strnit</property>
+                    <property name="nativeName">strnit</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">intcertificado</property>
+                    <property name="nativeName">intcertificado</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">intunidades</property>
+                    <property name="nativeName">intunidades</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">strnombre_1</property>
+                    <property name="nativeName">strnombre</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">numpeso</property>
+                    <property name="nativeName">numpeso</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">strnombre_2</property>
+                    <property name="nativeName">strnombre</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT 
+CASE
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 1 THEN 'ENERO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 2 THEN 'FEBRERO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 3 THEN 'MARZO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 4 THEN 'ABRIL'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 5 THEN 'MAYO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 6 THEN 'JUNIO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 7 THEN 'JULIO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 8 THEN 'AGOSTO'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 9 THEN 'SEPTIEMBRE'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 10 THEN 'OCTUBRE'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 11 THEN 'NOVIEMBRE'
+ WHEN EXTRACT(MONTH FROM reportes.registro.datefecha) = 12 THEN 'DICIEMBRE'
+END MES,
+reportes.registro.datefecha,
+reportes.cliente.strnombre,
+reportes.cliente.strnit,
+reportes.registro.intcertificado,
+reportes.registro.intunidades,
+reportes.llanta.strnombre,
+reportes.registro.numpeso,
+reportes.rin.strnombre
+FROM reportes.registro 
+join reportes.rin on registro.intidrin = rin.intid
+join reportes.llanta on registro.intidllanta = llanta.intid
+join reportes.cliente on registro.intidcliente = cliente.intid
+order by 2,1
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>mes</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>mes</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>mes</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>datefecha</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>13</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>datefecha</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>datefecha</design:label>
+            <design:formattingHints>
+              <design:displaySize>13</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>strnombre</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strnombre</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strnombre</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>strnit</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strnit</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strnit</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>intcertificado</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>intcertificado</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>intcertificado</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>intunidades</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>intunidades</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>intunidades</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>strnombre</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strnombre</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strnombre</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>numpeso</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>2</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>numpeso</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>numpeso</design:label>
+            <design:formattingHints>
+              <design:displaySize>7</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>strnombre</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strnombre</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strnombre</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="showFooterOnLast">false</property>
+            <property name="headerHeight">0.9in</property>
+            <property name="footerHeight">0in</property>
+            <page-header>
+                <grid id="109">
+                    <property name="backgroundImage">logo_petalo.jpg</property>
+                    <property name="backgroundRepeat">no-repeat</property>
+                    <list-property name="boundDataColumns">
+                        <structure>
+                            <property name="name">Column Binding</property>
+                            <expression name="expression" type="javascript">"(" + params["fechaIni"].value + " - " + params["fechaFin"].value + ")"</expression>
+                            <property name="dataType">string</property>
+                            <property name="allowExport">true</property>
+                        </structure>
+                    </list-property>
+                    <column id="110"/>
+                    <column id="111"/>
+                    <column id="112"/>
+                    <row id="113">
+                        <cell id="114">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="verticalAlign">middle</property>
+                            <label id="117">
+                                <property name="fontFamily">"Ebrima"</property>
+                                <property name="fontSize">16pt</property>
+                                <property name="fontWeight">bold</property>
+                                <property name="textAlign">center</property>
+                                <text-property name="text">Informe X Mes</text-property>
+                            </label>
+                            <data id="227">
+                                <property name="fontFamily">"Berlin Sans FB"</property>
+                                <property name="textAlign">center</property>
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">if(params["fechaIni"].value == null &amp;&amp; params["fechaFin"].value == null) {&#13;
+true&#13;
+} else { &#13;
+false&#13;
+}</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">Column Binding</property>
+                            </data>
+                        </cell>
+                        <cell id="116">
+                            <property name="textAlign">center</property>
+                            <image id="119">
+                                <property name="height">0.78125in</property>
+                                <property name="width">2.3229166666666665in</property>
+                                <property name="source">file</property>
+                                <expression name="uri" type="constant">logo_ecowheel.jpg</expression>
+                            </image>
+                        </cell>
+                    </row>
+                </grid>
+            </page-header>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="6">
+            <property name="fontFamily">"Berlin Sans FB"</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">mes</property>
+                    <text-property name="displayName">mes</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mes"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">datefecha</property>
+                    <text-property name="displayName">datefecha</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["datefecha"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">strnombre</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["strnombre"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">strnit</property>
+                    <text-property name="displayName">strnit</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["strnit"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">intcertificado</property>
+                    <text-property name="displayName">intcertificado</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["intcertificado"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">intunidades</property>
+                    <text-property name="displayName">intunidades</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["intunidades"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">strnombre_1</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["strnombre_1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">numpeso</property>
+                    <text-property name="displayName">numpeso</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["numpeso"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">strnombre_2</property>
+                    <text-property name="displayName">strnombre</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["strnombre_2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup1</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["numpeso"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_1</property>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup1</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["intunidades"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_2</property>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup2</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["numpeso"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_3</property>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup2</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["intunidades"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="55"/>
+            <column id="57"/>
+            <column id="58"/>
+            <column id="59"/>
+            <column id="61"/>
+            <column id="62"/>
+            <column id="63"/>
+            <group id="64">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["mes"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["mes"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="65">
+                        <cell id="66">
+                            <property name="colSpan">7</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"Ebrima"</property>
+                            <data id="85">
+                                <property name="fontSize">12pt</property>
+                                <property name="fontStyle">italic</property>
+                                <property name="resultSetColumn">mes</property>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="120">
+                        <property name="backgroundColor">#AACF47</property>
+                        <property name="fontSize">9pt</property>
+                        <property name="textAlign">center</property>
+                        <cell id="121">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="96">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Fecha</text-property>
+                            </label>
+                        </cell>
+                        <cell id="122">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="130">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Cliente</text-property>
+                            </label>
+                        </cell>
+                        <cell id="123">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="131">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Nit</text-property>
+                            </label>
+                        </cell>
+                        <cell id="124">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="97">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Certificado</text-property>
+                            </label>
+                        </cell>
+                        <cell id="126">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="132">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Marca</text-property>
+                            </label>
+                        </cell>
+                        <cell id="127">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="129">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Peso</text-property>
+                            </label>
+                        </cell>
+                        <cell id="128">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="98">
+                                <property name="fontWeight">bold</property>
+                                <property name="color">#FFFFFF</property>
+                                <text-property name="text">Unidades</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                </header>
+                <footer>
+                    <row id="75">
+                        <property name="fontSize">9pt</property>
+                        <cell id="76">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="78">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="79">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="80">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="82">
+                            <property name="backgroundColor">#FF8040</property>
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="137">
+                                <text-property name="text">TOTAL</text-property>
+                            </label>
+                        </cell>
+                        <cell id="83">
+                            <property name="backgroundColor">#FF8040</property>
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="134">
+                                <structure name="numberFormat">
+                                    <property name="category">Fixed</property>
+                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                </structure>
+                                <property name="textAlign">right</property>
+                                <property name="resultSetColumn">Aggregation</property>
+                            </data>
+                        </cell>
+                        <cell id="84">
+                            <property name="backgroundColor">#FF8040</property>
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="136">
+                                <property name="textAlign">center</property>
+                                <property name="resultSetColumn">Aggregation_1</property>
+                            </data>
+                        </cell>
+                    </row>
+                </footer>
+            </group>
+            <group id="185">
+                <property name="groupName">NewTableGroup2</property>
+                <expression name="keyExpr" type="javascript">row["strnombre_2"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["strnombre_2"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="215">
+                        <property name="fontSize">9pt</property>
+                        <property name="height">3mm</property>
+                        <cell id="216">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="217">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="218">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="219">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="220">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="221">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="222">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                    </row>
+                    <row id="186">
+                        <property name="fontSize">9pt</property>
+                        <cell id="187">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="204">
+                                <property name="resultSetColumn">strnombre_2</property>
+                            </data>
+                        </cell>
+                        <cell id="188">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="189">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="190">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="192">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="193">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="194">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                    </row>
+                </header>
+                <footer>
+                    <row id="195">
+                        <property name="fontSize">9pt</property>
+                        <cell id="196">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="197">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="198">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="199">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="201">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <label id="223">
+                                <text-property name="text">SUBTOTAL</text-property>
+                            </label>
+                        </cell>
+                        <cell id="202">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="205">
+                                <structure name="numberFormat">
+                                    <property name="category">Fixed</property>
+                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                </structure>
+                                <property name="textAlign">right</property>
+                                <property name="resultSetColumn">Aggregation_2</property>
+                            </data>
+                        </cell>
+                        <cell id="203">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">center</property>
+                            <data id="206">
+                                <property name="resultSetColumn">Aggregation_3</property>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="207">
+                        <property name="fontSize">9pt</property>
+                        <property name="height">3mm</property>
+                        <cell id="208">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="209">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="210">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="211">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="212">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="213">
+                            <property name="fontFamily">"Ebrima"</property>
+                        </cell>
+                        <cell id="214">
+                            <property name="fontFamily">"Ebrima"</property>
+                            <property name="textAlign">center</property>
+                        </cell>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="26">
+                    <property name="fontSize">9pt</property>
+                    <cell id="27">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="30">
+                            <property name="resultSetColumn">datefecha</property>
+                        </data>
+                    </cell>
+                    <cell id="31">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="32">
+                            <property name="resultSetColumn">strnombre</property>
+                        </data>
+                    </cell>
+                    <cell id="33">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="34">
+                            <property name="resultSetColumn">strnit</property>
+                        </data>
+                    </cell>
+                    <cell id="35">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="36">
+                            <property name="resultSetColumn">intcertificado</property>
+                        </data>
+                    </cell>
+                    <cell id="39">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="40">
+                            <property name="resultSetColumn">strnombre_1</property>
+                        </data>
+                    </cell>
+                    <cell id="41">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="42">
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">numpeso</property>
+                        </data>
+                    </cell>
+                    <cell id="43">
+                        <property name="fontFamily">"Ebrima"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="38">
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">intunidades</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="138">
+                    <cell id="139">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="140">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="141">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="142">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="144">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="145">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="146">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                </row>
+                <row id="45">
+                    <cell id="46">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="48">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="49">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="50">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="52">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="53">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                    <cell id="54">
+                        <property name="fontFamily">"Ebrima"</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
